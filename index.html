@@ -5,13 +5,13 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.js"></script>
 		<script src="./app.js"></script>
 	</head>
-	<body ng-app=>
+	<body ng-app="ngTodos">
 	  <h1>My Todo</h1>
-		<div class="container" ng-init="todos = []">
+		<div class="container" ng-controller="todoController">
 			<input ng-model="newTodo"/>
-			<button type="submit" ng-click="todos.push(newTodo); newTodo = ''">Add</button>
+			<button type="submit" ng-click="addTodo()">Add</button>
 		<ul>
-			<li ng-repeat="todo in todos track by $index" ng-click="todos.splice($index, 1)">{{todo}}</li>
+			<li ng-repeat="todo in todos track by $index" ng-click="removeTodo($index)">{{todo}}</li>
 		</ul>
 
 		<hr>
