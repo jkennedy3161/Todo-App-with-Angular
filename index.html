@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	    <script src="./bower_compoents/angular/angular.js"></script>
+	<title>AngTodo</title>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.js"></script>
 		<script src="./app.js"></script>
 	</head>
-	<body>
+	<body ng-app=>
 	  <h1>My Todo</h1>
-		<div id="container">
-			<forn>
-				<input type="text" />
-				<button type="submit">Add</button>
-			</forn>
-			<hr>
-			<pre>
-				
-			</pre>
+		<div class="container" ng-init="todos = []">
+			<input ng-model="newTodo"/>
+			<button type="submit" ng-click="todos.push(newTodo); newTodo = ''">Add</button>
+		<ul>
+			<li ng-repeat="todo in todos track by $index" ng-click="todos.splice($index, 1)">{{todo}}</li>
+		</ul>
+
+		<hr>
+		<pre>
+		  {{todos | json}}
+		</pre>
 		</div>
 	</body>
 </html>
